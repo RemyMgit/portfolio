@@ -10,7 +10,10 @@ const Menu = [
 		title: "Booki",
 		category: ["Frontend"],
 		url: "https://remymgit.github.io/Projet-2/",
-		repositoryUrl: "https://github.com/RemyMgit/Projet-2"
+		repositoryUrl: "https://github.com/RemyMgit/Projet-2",
+		description: "Ma mission était de développer l'HTML et le CSS d'une agence de voyages.",
+    	challenges: "Le challenge a été de se familiariser avec la base d'un métier et bien la comprendre.",
+    	skills: "Ce projet m'a permis d'apprendre et maitriser l'HTML et le CSS.",
 	},
 	{
 		id: 2,
@@ -18,7 +21,10 @@ const Menu = [
 		title: "Sophie Bluel",
 		category: ["Frontend"],
 		url: "https://remymgit.github.io/P3Front/",
-		repositoryUrl: "https://github.com/RemyMgit/P3Front"
+		repositoryUrl: "https://github.com/RemyMgit/P3Front",
+		description: "Ma mission était de créer une page web dynamique avec Javascript.",
+    	challenges: "Le challenge a été de connecter le backend et le frontend en ajoutant des filtres au frontend permettant le tri des photos.",
+    	skills: "Ce projet m'a permis d'apprendre le fonctionnement de Javascript.",
 	},
 	{
 		id: 3,
@@ -26,7 +32,10 @@ const Menu = [
 		title: "Kasa",
 		category: ["Frontend","React"],
 		url: "",
-		repositoryUrl: "https://github.com/RemyMgit/P6_kasa"
+		repositoryUrl: "https://github.com/RemyMgit/P6_kasa",
+		description: "Ma mission était de mettre à jour un site anciennement en ASP.NET pour le passer en React coté Front.",
+    	challenges: "Le challenge a été se familiariser avec le React puis l'exploiter afin de répondre à la demande.",
+    	skills: "Ce projet m'a permis de découvrir la bibliothèque React et m'y familiariser.",
 	},
 	{
 		id: 4,
@@ -34,7 +43,10 @@ const Menu = [
 		title: "Mon vieux grimoire",
 		category: ["Backend"],
 		url: "",
-		repositoryUrl: "https://github.com/RemyMgit/P7"
+		repositoryUrl: "https://github.com/RemyMgit/P7",
+		description: "Ma mission était de développer le backend d'un site de notation de livre",
+    	challenges: "Le challenge a été de comprendre comment fonctionne le dévelopopement du backend et de répondre à la demande.",
+    	skills: "Ce projet m'a permis de mieux comprendre le fonctionnement du backend et ces contraintes.",
 	},
 ];
 

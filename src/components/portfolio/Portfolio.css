@@ -48,8 +48,17 @@
   width: 100%;
   transition: 0.3s;
   opacity: 0;
+  z-index: -1;
 }
 
+.custom-modal {
+  /*max-width: 400px; */
+  background-color: var(--body-color);
+  position: fixed;
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+}
 .portfolio__card:hover .portfolio__mask {
   opacity: 0.9;
 }

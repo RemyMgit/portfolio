@@ -3,26 +3,41 @@ import "./Portfolio.css";
 
 import Menu from "./Menu";
 import { RiGithubLine, RiLink } from "react-icons/ri";
+import Modal from "react-modal"; 
 
 import { motion } from "framer-motion";
 
 const Portfolio = () => {
-	const [items, setItems] = useState(Menu);
-	const [activeFilter, setActiveFilter] = useState(0);
-	const filterItems = (categoryItem) => {
-		const updatedItems = Menu.filter((curElem) => {
-			return curElem.category.includes(categoryItem);
-		});
+  const [items, setItems] = useState(Menu);
+  const [activeFilter, setActiveFilter] = useState(0);
+  const [selectedProject, setSelectedProject] = useState(null); 
 
-		setItems(updatedItems);
-	};
+  
+  const openModal = (project) => {
+    setSelectedProject(project);
+	document.querySelector(".portfolio__mask").style.opacity = "0.5";
+  };
 
-	return (
-		<section className="portfolio container section" id="portfolio">
-			<h2 className="section__title">Mes Projets</h2>
 
-			<div className="portfolio__filters">
-				<span className={activeFilter === 0 ? 'portfolio__item portfolio__item-active' : 'portfolio__item'} onClick={() => { setItems(Menu); setActiveFilter(0) }}>
+  const closeModal = () => {
+    setSelectedProject(null);
+	document.querySelector(".portfolio__mask").style.opacity = "0";
+  };
+
+  const filterItems = (categoryItem) => {
+    const updatedItems = Menu.filter((curElem) => {
+      return curElem.category.includes(categoryItem);
+    });
+
+    setItems(updatedItems);
+  };
+
+  return (
+    <section className="portfolio container section" id="portfolio">
+      <h2 className="section__title">Mes Projets</h2>
+
+      <div className="portfolio__filters">
+	  <span className={activeFilter === 0 ? 'portfolio__item portfolio__item-active' : 'portfolio__item'} onClick={() => { setItems(Menu); setActiveFilter(0) }}>
 					All
 				</span>
 				<span className={activeFilter === 1 ? 'portfolio__item portfolio__item-active' : 'portfolio__item'} onClick={() => { filterItems("Frontend"); setActiveFilter(1) }}>
@@ -34,40 +49,67 @@ const Portfolio = () => {
 				<span className={activeFilter === 3 ? 'portfolio__item portfolio__item-active' : 'portfolio__item'} onClick={() => { filterItems("React"); setActiveFilter(3) }}>
 					React
 				</span>
-			</div>
+      </div>
 
-			<div className="portfolio__container grid">
-				{items.map((elem) => {
-					const { id, image, title, category, url, repositoryUrl } = elem;
+      <div className="portfolio__container grid">
+        {items.map((elem) => {
+          const {
+            id,
+            image,            
+            category,
+            url,
+            repositoryUrl,                       
+          } = elem;
 
-					return (
-						<motion.div
-							layout
-							animate={{ opacity: 1 }}
-							initial={{ opacity: 0 }}
-							exit={{ opacity: 0 }}
-							transition={{ duration: 0.3 }}
-							className="portfolio__card"
-							key={id}>
-							<div className="portfolio__thumbnail">
-								<img src={image} alt="" className="portfolio__img" height="267" />
-								<div className="portfolio__mask"></div>
-							</div>
+          return (
+            <motion.div
+              layout
+              animate={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="portfolio__card"
+              key={id}
+            >
+              <div className="portfolio__thumbnail">
+                <img src={image} alt="" className="portfolio__img" height="267" />
+                <div className="portfolio__mask"></div>
+              </div>
 
-							<span className="portfolio__category">{category.join(', ')}</span>
-							<h3 className="portfolio__title">{title}</h3>
-							<a href={url} target="_blank" rel="noreferrer" className="portfolio__button">
-								<RiLink className="portfolio__button-icon" />
-							</a>
-							<a href={repositoryUrl} target="_blank" rel="noreferrer" className="portfolio__github-button">
-								<RiGithubLine className="portfolio__button-icon" />
-							</a>
-						</motion.div>
-					);
-				})}
-			</div>
-		</section>
-	);
+              <span className="portfolio__category">{category.join(", ")}</span>
+
+              <button onClick={() => openModal(elem)}>En savoir plus</button>
+
+              <a href={url} target="_blank" rel="noreferrer" className="portfolio__button">
+                <RiLink className="portfolio__button-icon" />
+              </a>
+              <a href={repositoryUrl} target="_blank" rel="noreferrer" className="portfolio__github-button">
+                <RiGithubLine className="portfolio__button-icon" />
+              </a>
+            </motion.div>
+          );
+        })}
+      </div>
+
+      {/* Modale pour afficher les informations supplémentaires */}
+      <Modal
+        isOpen={selectedProject !== null}
+        onRequestClose={closeModal}
+        contentLabel="Project Details Modal"
+		className="custom-modal"
+      >
+        {selectedProject && (
+          <div>
+            <h2>{selectedProject.title}</h2>
+            <p>{selectedProject.description}</p>
+            <p>{selectedProject.challenges}</p>
+            <p>{selectedProject.skills}</p>
+            <button onClick={closeModal}>Fermer</button>
+          </div>
+        )}
+      </Modal>
+    </section>
+  );
 };
 
 export default Portfolio;
