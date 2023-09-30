@@ -33,7 +33,7 @@ const Menu = [
 		category: ["Frontend","React"],
 		url: "",
 		repositoryUrl: "https://github.com/RemyMgit/P6_kasa",
-		description: "Ma mission était de mettre à jour un site anciennement en ASP.NET pour le passer en React coté Front.",
+		description: "Ma mission était de mettre à jour un site anciennement en ASP.NET pour le passé en React côté Front.",
     	challenges: "Le challenge a été se familiariser avec le React puis l'exploiter afin de répondre à la demande.",
     	skills: "Ce projet m'a permis de découvrir la bibliothèque React et m'y familiariser.",
 	},
@@ -45,7 +45,7 @@ const Menu = [
 		url: "",
 		repositoryUrl: "https://github.com/RemyMgit/P7",
 		description: "Ma mission était de développer le backend d'un site de notation de livre",
-    	challenges: "Le challenge a été de comprendre comment fonctionne le dévelopopement du backend et de répondre à la demande.",
+    	challenges: "Le challenge a été de comprendre comment fonctionne le développement du backend et de répondre à la demande.",
     	skills: "Ce projet m'a permis de mieux comprendre le fonctionnement du backend et ces contraintes.",
 	},
 ];
